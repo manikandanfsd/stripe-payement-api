@@ -9,7 +9,7 @@ const endpointSecret =
   "whsec_385e356d28de8e9fe059e568c8bf7f234b2bc4a08fb2112bb630cde267ca1f42";
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Stripe Payment!");
+  res.send("Welcome to Stripe Payment! - Update on 27/04/2023 12:05 AM");
 });
 
 app.post("/payment-sheet", async (req, res) => {
