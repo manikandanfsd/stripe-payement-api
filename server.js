@@ -12,6 +12,17 @@ app.get("/", (req, res) => {
   res.send("Welcome to Stripe Payment! - Update on 27/04/2023 12:05 AM");
 });
 
+app.post("/create-payment-intent", async (req, res) => {
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: 1099,
+    currency: "inr",
+  });
+  const clientSecret = paymentIntent.client_secret;
+  res.json({
+    clientSecret,
+  });
+});
+
 app.post("/payment-sheet", async (req, res) => {
   // Use an existing Customer ID if this is a returning customer.
 
