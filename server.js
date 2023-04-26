@@ -23,6 +23,21 @@ app.post("/create-payment-intent", async (req, res) => {
   });
 });
 
+app.post("/payment-intent", async (req, res) => {
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: 1099,
+      currency: "inr",
+      payment_method_types: ["card"],
+    });
+    res.json({
+      paymentIntent: paymentIntent.client_secret,
+    });
+  } catch (error) {
+    res.send({ message: error.message });
+  }
+});
+
 app.post("/payment-sheet", async (req, res) => {
   // Use an existing Customer ID if this is a returning customer.
 
