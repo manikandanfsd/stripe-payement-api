@@ -26,8 +26,8 @@ app.post("/create-payment-intent", async (req, res) => {
 app.post("/payment-intent", async (req, res) => {
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: 10,
-      currency: "eur",
+      amount: 1099,
+      currency: "inr",
       payment_method_types: [
         "bancontact",
         "card",
@@ -56,20 +56,13 @@ app.post("/payment-sheet", async (req, res) => {
     );
     const paymentIntent = await stripe.paymentIntents.create({
       confirm: false,
-      amount: 1099,
-      currency: "inr",
+      amount: 1,
+      currency: "eur",
       customer: customer.id,
       // automatic_payment_methods: {
       //   enabled: true,
       // },
-      payment_method_types: [
-        "bancontact",
-        "card",
-        "ideal",
-        "klarna",
-        "sepa_debit",
-        "sofort",
-      ],
+      payment_method_types: ["card"],
     });
 
     res.json({
